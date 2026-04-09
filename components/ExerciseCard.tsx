@@ -13,7 +13,7 @@ export default function ExerciseCard({ exercise, onPress }: ExerciseCardProps) {
       style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
     >
       <Text style={styles.emoji}>{exercise.emoji}</Text>
-      <Text style={styles.name}>{exercise.name}</Text>
+      <Text style={styles.name} numberOfLines={1}>{exercise.name}</Text>
       <View style={styles.meta}>
         <Text style={styles.metaText}>
           {exercise.defaultSets} x {exercise.defaultReps}

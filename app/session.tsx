@@ -120,7 +120,7 @@ function ActiveSession({ workout }: { workout: Workout }) {
       {/* Header */}
       <View style={styles.header}>
         <Pressable onPress={() => router.back()} style={styles.backButton}>
-          <Text style={styles.backText}>{'<'}</Text>
+          <Text style={styles.backText}>{'\u2190'}</Text>
         </Pressable>
         <Text style={styles.workoutName} numberOfLines={1}>
           {workout.name.toUpperCase()}
@@ -130,8 +130,8 @@ function ActiveSession({ workout }: { workout: Workout }) {
         </Text>
       </View>
 
-      {/* Exercise name */}
-      {currentExercise && !state.isComplete && (
+      {/* Exercise name — only show when multi-exercise (avoids duplication for quick start) */}
+      {totalExercises > 1 && currentExercise && !state.isComplete && (
         <Text style={styles.currentExerciseName}>
           {currentExercise.name}
         </Text>

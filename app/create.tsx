@@ -129,7 +129,7 @@ export default function CreateScreen() {
         {/* Header */}
         <View style={styles.header}>
           <Pressable onPress={() => router.back()} style={styles.backBtn}>
-            <Text style={styles.backText}>{'<'} Back</Text>
+            <Text style={styles.backText}>{'\u2190'} Back</Text>
           </Pressable>
           <Text style={styles.title}>CREATE WORKOUT</Text>
         </View>
@@ -137,28 +137,26 @@ export default function CreateScreen() {
         {/* AI Generate */}
         <View style={styles.section}>
           <Text style={styles.sectionLabel}>AI GENERATE</Text>
-          <View style={styles.aiRow}>
-            <TextInput
-              style={styles.aiInput}
-              placeholder="e.g. arms, push day, heavy legs..."
-              placeholderTextColor="#4A4A4A"
-              value={aiPrompt}
-              onChangeText={setAiPrompt}
-              onSubmitEditing={handleGenerate}
-              returnKeyType="go"
-            />
-            <Pressable
-              onPress={handleGenerate}
-              style={[styles.aiButton, generating && styles.aiButtonDisabled]}
-              disabled={generating}
-            >
-              {generating ? (
-                <ActivityIndicator size="small" color="#fff" />
-              ) : (
-                <Text style={styles.aiButtonText}>GO</Text>
-              )}
-            </Pressable>
-          </View>
+          <TextInput
+            style={styles.aiInput}
+            placeholder="e.g. arms, push day, heavy legs..."
+            placeholderTextColor="#4A4A4A"
+            value={aiPrompt}
+            onChangeText={setAiPrompt}
+            onSubmitEditing={handleGenerate}
+            returnKeyType="go"
+          />
+          <Pressable
+            onPress={handleGenerate}
+            style={[styles.aiButton, generating && styles.aiButtonDisabled]}
+            disabled={generating}
+          >
+            {generating ? (
+              <ActivityIndicator size="small" color="#fff" />
+            ) : (
+              <Text style={styles.aiButtonText}>GENERATE WORKOUT</Text>
+            )}
+          </Pressable>
           {!apiKey && (
             <Text style={styles.hint}>Set EXPO_PUBLIC_ANTHROPIC_API_KEY in .env for AI generation</Text>
           )}
@@ -293,11 +291,10 @@ const styles = StyleSheet.create({
   sectionLabel: { color: '#8E8E93', fontSize: 11, fontWeight: '800', letterSpacing: 2, marginBottom: 10 },
 
   // AI Generate
-  aiRow: { flexDirection: 'row', gap: 10 },
-  aiInput: { flex: 1, backgroundColor: '#1A1A1A', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 14, color: '#fff', fontSize: 15, borderWidth: 1, borderColor: '#2C2C2E' },
-  aiButton: { backgroundColor: '#FF3B30', borderRadius: 12, width: 56, alignItems: 'center', justifyContent: 'center' },
+  aiInput: { backgroundColor: '#1A1A1A', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 14, color: '#fff', fontSize: 15, borderWidth: 1, borderColor: '#2C2C2E', marginBottom: 10 },
+  aiButton: { backgroundColor: '#FF3B30', borderRadius: 12, paddingVertical: 14, alignItems: 'center', justifyContent: 'center' },
   aiButtonDisabled: { opacity: 0.5 },
-  aiButtonText: { color: '#fff', fontWeight: '900', fontSize: 15 },
+  aiButtonText: { color: '#fff', fontWeight: '900', fontSize: 15, letterSpacing: 1 },
   hint: { color: '#4A4A4A', fontSize: 11, marginTop: 6 },
 
   // Name
