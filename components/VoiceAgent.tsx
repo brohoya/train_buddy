@@ -16,11 +16,8 @@ async function requestMicrophonePermission(): Promise<boolean> {
 interface VoiceAgentProps {
   dom?: import('expo/dom').DOMProps;
   agentId: string;
-  exerciseName: string;
-  totalSets: number;
-  targetReps: number;
-  weight: number;
-  autoStart?: boolean;
+  workoutName: string;
+  workoutPlan: string;
   onStatusChange: (status: string) => void;
   onTranscript: (role: string, message: string) => void;
   onModeChange: (isSpeaking: boolean) => void;
@@ -31,11 +28,8 @@ interface VoiceAgentProps {
 
 function VoiceAgentInner({
   agentId,
-  exerciseName,
-  totalSets,
-  targetReps,
-  weight,
-  autoStart,
+  workoutName,
+  workoutPlan,
   onStatusChange,
   onTranscript,
   onModeChange,
@@ -71,10 +65,8 @@ function VoiceAgentInner({
     conversation.startSession({
       agentId,
       dynamicVariables: {
-        exercise_name: exerciseName,
-        total_sets: String(totalSets),
-        target_reps: String(targetReps),
-        weight: String(weight),
+        workout_name: workoutName,
+        workout_plan: workoutPlan,
       },
       clientTools: {
         complete_set: completeSet,
@@ -82,7 +74,7 @@ function VoiceAgentInner({
         start_rest_timer: startRestTimer,
       },
     });
-  }, [conversation, agentId, exerciseName, totalSets, targetReps, weight]);
+  }, [conversation, agentId, workoutName, workoutPlan]);
 
   const toggleConversation = useCallback(async () => {
     if (conversation.status === 'connected') {
@@ -91,12 +83,6 @@ function VoiceAgentInner({
       await startConversation();
     }
   }, [conversation.status, startConversation]);
-
-  useEffect(() => {
-    if (autoStart && agentId) {
-      startConversation();
-    }
-  }, []);
 
   const isConnected = conversation.status === 'connected';
   const statusColor = isConnected
@@ -150,31 +136,13 @@ function VoiceAgentInner({
         }}
       >
         {isConnected && conversation.isSpeaking ? (
-          <svg
-            width="36"
-            height="36"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke={statusColor}
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={statusColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
             <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
             <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
           </svg>
         ) : (
-          <svg
-            width="36"
-            height="36"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke={statusColor}
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={statusColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
             <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
             <line x1="12" y1="19" x2="12" y2="23" />

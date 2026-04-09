@@ -1,9 +1,9 @@
 import { Pressable, Text, View, StyleSheet } from 'react-native';
-import { Exercise } from '../src/types';
+import { ExerciseDefinition } from '../src/types';
 
 interface ExerciseCardProps {
-  exercise: Exercise;
-  onPress: (exercise: Exercise) => void;
+  exercise: ExerciseDefinition;
+  onPress: (exercise: ExerciseDefinition) => void;
 }
 
 export default function ExerciseCard({ exercise, onPress }: ExerciseCardProps) {
@@ -36,23 +36,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#2C2C2E',
     transform: [{ scale: 0.97 }],
   },
-  emoji: {
-    fontSize: 32,
-  },
-  name: {
-    color: '#FFFFFF',
-    fontSize: 15,
-    fontWeight: '700',
-    marginTop: 10,
-  },
-  meta: {
-    marginTop: 6,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  metaText: {
-    color: '#8E8E93',
-    fontSize: 13,
-    fontWeight: '500',
-  },
+  emoji: { fontSize: 32 },
+  name: { color: '#FFFFFF', fontSize: 15, fontWeight: '700', marginTop: 10 },
+  meta: { marginTop: 6, flexDirection: 'row', alignItems: 'center' },
+  metaText: { color: '#8E8E93', fontSize: 13, fontWeight: '500' },
 });
