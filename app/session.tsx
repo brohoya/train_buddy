@@ -185,7 +185,7 @@ export default function SessionScreen() {
           totalSets={totalSets}
           targetReps={targetReps}
           weight={weight}
-          autoStart={true}
+          autoStart={false}
           onStatusChange={handleStatusChange}
           onTranscript={handleTranscript}
           onModeChange={handleModeChange}

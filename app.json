@@ -26,6 +26,9 @@
         "RECORD_AUDIO"
       ]
     },
+    "web": {
+      "bundler": "metro"
+    },
     "plugins": [
       "expo-router",
       "expo-font"

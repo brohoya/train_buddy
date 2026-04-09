@@ -7,7 +7,8 @@
     "dev": "expo start --tunnel",
     "ios": "expo run:ios",
     "android": "expo run:android",
-    "prebuild": "expo prebuild --clean"
+    "prebuild": "expo prebuild --clean",
+    "web": "expo start --web"
   },
   "dependencies": {
     "@elevenlabs/react": "^1.0.3",
