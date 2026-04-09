@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "name": "Train Buddy",
+    "slug": "train-buddy",
+    "version": "1.0.0",
+    "scheme": "train-buddy",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.trainbuddy.app",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Train Buddy needs microphone access for voice conversations with your AI personal trainer.",
+        "UIBackgroundModes": [
+          "audio"
+        ]
+      }
+    },
+    "android": {
+      "package": "com.trainbuddy.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#0A0A0A"
+      },
+      "permissions": [
+        "RECORD_AUDIO"
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
